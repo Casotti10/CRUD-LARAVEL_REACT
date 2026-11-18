@@ -40,13 +40,15 @@ trait ProfileValidationRules
     protected function emailRules(?int $userId = null): array
     {
         return [
-            'required',
-            'string',
-            'email',
+            'required', // obrigatório, não pode ficar vazio
+            'string',   // obrigatório, não pode ficar vazio
+            'email',    // tem que ter formato de e-mail (algo@algo.com)
             'max:255',
             $userId === null
                 ? Rule::unique(User::class)
                 : Rule::unique(User::class)->ignore($userId),
+            // não pode existir outro usuário com esse e-mail...
+            // ...exceto VOCÊ mesmo (senão salvar o perfil sem mudar o e-mail daria erro)
         ];
     }
 }
