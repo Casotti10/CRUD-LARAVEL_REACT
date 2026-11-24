@@ -20,5 +20,6 @@ class CategoriaSeeder extends Seeder
         foreach ($categorias as $nome) {
             Categoria::firstOrCreate(['nome' => $nome]); // procura pelo nome e só insere se nao existir, nao quebra o unique.
         }
+
     }
 }
