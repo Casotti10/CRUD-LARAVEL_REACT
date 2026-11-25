@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 #[Fillable(['categoria_id', 'nome', 'sku', 'descricao', 'preco', 'estoque', 'ativo'])]
 class Produto extends Model
@@ -15,5 +17,10 @@ class Produto extends Model
             'estoque' => 'integer',
             'ativo' => 'boolean',
         ];
+    }
+
+    public function categoria(): BelongsTo // devolve o construtor de consulta do relacionamento, ainda sem executar
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }
