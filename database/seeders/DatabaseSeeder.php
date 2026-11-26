@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // Define a ordem, o ProdutoSeeder vai dps de Categoria Seeder porque o produto depende da categoria
         $this->call([
             CategoriaSeeder::class,
+            ProdutoSeeder::class,
         ]);
 
     }
